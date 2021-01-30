@@ -1,0 +1,18 @@
+<div class="search-field m-5" tabindex="-1">
+    <div class="input-group mb-1">
+        <i class="fa fa-search search-icon"></i>
+        <input type="text" [formControl]="searchTerm" class="form-control default-page-height input-search" placeholder="Search book" />
+        
+    </div>
+</div>
+<ul class='book-list'>
+    <li class='item col-3' *ngFor="let item of dataSource.value">
+        <a (click) = "openPopup(item.id)" data-toggle="modal" data-target="#myModal">
+            <img class="img-reponsive" alt="book" [src]="item.volumeInfo.imageLinks.smallThumbnail" />
+            <span class="title">{{item.volumeInfo.title}}</span>
+            <span class=" mt-2">{{item.volumeInfo.authors}} <span *ngIf="item.volumeInfo.publishDate">-</span> {{item.volumeInfo.publishDate}}</span>
+        </a>
+    </li>
+</ul>
+
+<app-book-detail #myModal [bookId] ="bookId"></app-book-detail>

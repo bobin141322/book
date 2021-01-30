@@ -1,0 +1,48 @@
+<div class="modal " id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Book detail</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class='book-detail row col-10' *ngIf="bookId && !delivery">
+                <div class='item col-6' *ngIf="book && book.volumeInfo">
+                    <img class="img-reponsive"  alt="book" [src]="book.volumeInfo.imageLinks.thumbnail" />
+                    <span class="title mt-2">{{book.volumeInfo.title}}</span>
+                    <span class=" mt-2">{{book.volumeInfo.authors}}</span>
+                    <span class=" mt-2">{{book.volumeInfo.publishDate}}</span>
+                    <div>
+                        Ship via
+                        <div class="form-check-inline" *ngFor="let cost of costs">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optradio" (click)="selectDelivery(cost.name, cost.baseCost)">{{cost.name}} ${{cost.baseCost}}
+                            </label>
+                          </div>
+                        </div>
+                    <button [disabled]="!delieveryInfo" class="btn btn-primary mt-3" (click) = 'buyBook()' ><i class=" pr-3 fa fa-shopping-cart"></i>Buy</button>
+                </div>
+                <div class="col-6" *ngIf="book && book.volumeInfo">
+                    <p class="description mt-3" [innerHTML]="book.volumeInfo.description"></p>
+                </div>
+            </div>
+            <div class='info-detail row col-10' *ngIf="delivery">
+                <h2>Here is the delivery infomation. Please keep track this.</h2>
+                <ul>
+                    <li><label>{{delivery.sender}}:</label> {{delivery.senderName}}</li>
+                    <li><label>{{delivery.contactName}}:</label> {{delivery.contactValue}}</li>
+                    <li><label>{{delivery.senderDate}}:</label> {{delivery.dateValue}}</li>
+                    <li><label>Cost:</label> ${{delivery.cost}}</li>
+                </ul>
+                
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div></div>

@@ -1,0 +1,35 @@
+.book-list{
+    display: flex;
+    flex-flow: row wrap;
+    .item{
+        width: 23%;
+        margin: 0.5rem;
+        
+        list-style: none;
+        &:hover{
+            text-decoration: none;
+        }
+        .title{
+            display:block;
+            font-weight: 500;;
+        }
+    }
+    
+}
+.search-field{
+    input{
+        padding-left: 40px;
+        border-radius: 5px;;
+    }
+    .search-icon{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 8px;
+    top: 6px;
+        font-size: 24px;
+        display: block;
+        color: #FF4A1C;
+        z-index: 4;
+    }
+}
